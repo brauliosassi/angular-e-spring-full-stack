@@ -3,7 +3,7 @@
     <li class="breadcrumb-item active">Cadastro</li>
 </ol>
 <div class="container">
-  <form>
+  <form #clienteForm="ngForm" (ngSubmit)="onSubmit()" >
     <div class="row">
       <div class="col-md-6">
           <div class="form-group">
@@ -34,14 +34,15 @@
       <div class="col-md-6">
           <div class="form-group">
             <label>CPF: *</label>
-            <input type="text" class="form-control" [(ngModel)]="cliente.cpf" name="cpf" />
+            <input type="text" class="form-control"
+                   [(ngModel)]="cliente.cpf" name="cpf" />
           </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-2">
-        <button type="submit" class="btn btn-success" (click)="clicar()">
+        <button type="submit" class="btn btn-success" >
           <i class="fa fa-save"></i> Salvar
         </button>
       </div>
