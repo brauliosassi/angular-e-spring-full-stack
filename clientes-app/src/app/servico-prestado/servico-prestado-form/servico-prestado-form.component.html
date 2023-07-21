@@ -4,7 +4,8 @@
 </ol>
 <div class="container">
   <form #form="ngForm" (submit)="onSubmit()" >
-      <div class="row">
+
+    <div class="row">
         <div class="col-md-12">
           <div class="form-group">
             <label>Cliente: </label>
@@ -12,13 +13,15 @@
                     [ngModelOptions]="{standalone: true}"
                     [(ngModel)]="servico.idCliente">
               <option value="">Selecione...</option>
-              <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+              <option *ngFor="let cliente of clientes"
+                      [ngValue]="cliente.id">
                   {{ cliente.nome }}
               </option>
             </select>
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
@@ -42,10 +45,10 @@
 
         <div class="col-md-6">
           <div class="form-group">
-            <label>Valor: </label>
+            <label>Preço: </label>
               <input class="form-control"
                      [(ngModel)]="servico.preco" type="text"
-                     name="valor" id="inputValor">
+                     name="preco" id="inputPreco">
             </div>
         </div>
       </div>
