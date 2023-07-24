@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Cliente } from '../cliente';
 import { ClientesService } from '../../clientes.service';
 import { Observable } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-clientes-form',
@@ -35,7 +36,7 @@ export class ClientesFormComponent implements OnInit {
         .getClienteById(this.id)
         .subscribe(
           response => this.cliente = response,
-          errorResponse => this.cliente = new Cliente()
+          HttpErrorResponse => this.cliente = new Cliente()
         )
       }
     })
