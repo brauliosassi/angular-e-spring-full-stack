@@ -1,0 +1,55 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent  {
+
+  username: string;
+  password: string;
+  cadastrando: boolean;
+  loginError: boolean;
+  //mensagemSucesso: string;
+  errors: String[];
+
+  constructor(
+    private router: Router,
+
+  ) { }
+
+  onSubmit(){
+    //console.log(`User: ${this.username}, Pass: ${this.password}`)
+    this.router.navigate(['/home'])
+  }
+
+  preparaCadastrar(event){
+    event.preventDefault();
+    this.cadastrando = true;
+  }
+
+  cancelaCadastro(){
+    this.cadastrando = false;
+  }
+
+  // cadastrar(){
+  //   const usuario: Usuario = new Usuario();
+  //   usuario.username = this.username;
+  //   usuario.password = this.password;
+  //   this.authService
+  //       .salvar(usuario)
+  //       .subscribe( response => {
+  //           this.mensagemSucesso = "Cadastro realizado com sucesso! Efetue o login.";
+  //           this.cadastrando = false;
+  //           this.username = '';
+  //           this.password = '';
+  //           this.errors = []
+  //       }, errorResponse => {
+  //           this.mensagemSucesso = null;
+  //           this.errors = errorResponse.error.errors;
+  //       })
+  // }
+
+}
