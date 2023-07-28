@@ -11,13 +11,16 @@
                                       {{ cadastrando ? 'Cadastro de Novo Usuário' : 'Entrar' }}
                                   </h3>
                               </div>
+
                               <div class="card-body">
                                 <div class="alert alert-success" *ngIf="mensagemSucesso">
                                       {{ mensagemSucesso }}
                                 </div>
-                                  <div class="alert alert-danger" *ngIf="loginError">
-                                    Login e/ou Senha Incorreto!
-                                  </div>
+
+                                <div class="alert alert-danger" *ngFor="let erro of errors">
+                                      {{ erro }}
+                                </div>
+
                                   <form #loginForm="ngForm" (submit)="onSubmit();">
                                       <div class="form-group">
                                           <label class="small mb-1">Login</label>
@@ -41,7 +44,7 @@
                                           </button>
 
                                           <button type="button" class="btn btn-success"
-                                                  (click)="cadastrar"
+                                                  (click)="cadastrar()"
                                                   *ngIf="cadastrando">
                                               Cadastrar
                                           </button>
@@ -50,8 +53,10 @@
                                                   class="btn btn-danger ml-1" *ngIf="cadastrando">
                                               Cancelar
                                           </button>
+
                                       </div>
                                   </form>
+                                  
                               </div>
 
                               <div class="card-footer text-center">
