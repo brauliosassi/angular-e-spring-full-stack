@@ -13,8 +13,7 @@ export class LoginComponent  {
   username: string;
   password: string;
   cadastrando: boolean;
-  loginError: boolean;
-  mensagemSucesso: string;
+   mensagemSucesso: string;
   errors: string[];
 
   constructor(
@@ -23,8 +22,16 @@ export class LoginComponent  {
   ) { }
 
   onSubmit(){
-    //console.log(`User: ${this.username}, Pass: ${this.password}`)
-    this.router.navigate(['/home'])
+    this.authService
+        .tentarLogar( this.username, this.password)
+        .subscribe( response => {
+          console.log(response )
+          this.router.navigate(['/home'])
+        }, errorResponse => {
+          this.errors = ['Usuario e/ou senha incorreto(s).']
+        })
+
+   
   }
 
   preparaCadastrar(event){
@@ -47,7 +54,7 @@ export class LoginComponent  {
              this.cadastrando = false;
              this.username = '';
              this.password = '';
-             this.errors = [];
+             this.errors = []
           }, errorResponse  => {
              this.mensagemSucesso = null;
              this.errors = errorResponse.error.erros;
