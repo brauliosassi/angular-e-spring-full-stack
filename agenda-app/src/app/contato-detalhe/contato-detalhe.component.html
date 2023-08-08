@@ -1,0 +1,14 @@
+<mat-card style="text-align: center;">
+    <mat-card-header>
+          <mat-card-title>
+              <mat-icon>face</mat-icon>
+          </mat-card-title>
+          <img mat-card-image
+                        src="data:image/png;base64,{{contato.foto}}"
+          />
+    </mat-card-header>
+
+    <mat-card-actions>
+        <button mat-raised-button collor="primary" (click)="fechar()">Fechar</button>
+    </mat-card-actions>
+</mat-card>
