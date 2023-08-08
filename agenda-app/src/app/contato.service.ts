@@ -11,13 +11,18 @@ import { environment } from '../environments/environment'
 })
 export class ContatoService {
 
-  url: string = environment.apiBaseUrl;
+    url: string = environment.apiBaseUrl;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+    constructor(
+      private http: HttpClient
+    ) { }
 
-  save(contato: Contato) : Observable<Contato> {
-    return this.http.post<Contato>(this.url, contato);
+    save(contato: Contato) : Observable<Contato> {
+      return this.http.post<Contato>(this.url, contato);
+    }
+
+    list(): Observable<Contato[]> {
+      return this.http.get<any>(this.url);
+    }
+
   }
-}

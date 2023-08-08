@@ -21,11 +21,21 @@ export class ContatoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      this.formulario = this.fb.group({
-        nome: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]]
-      })
+      this.montarFormulario();
+      this.listarContatos();
+  }
 
+  montarFormulario() {
+    this.formulario = this.fb.group({
+      nome: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    })
+  }
+
+  listarContatos() {
+    this.service.list().subscribe( response => {
+      this.contatos = response;
+    })
   }
 
   submit() {
